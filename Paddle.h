@@ -18,7 +18,7 @@ public:
 private:
 
     MoveComponent moveComponent;
-    static const int moveSpeed = 5;
+    static const int moveSpeed = 50;
 };
 
 #endif // PADDLE_H

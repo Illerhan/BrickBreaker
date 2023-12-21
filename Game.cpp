@@ -44,7 +44,7 @@ Game::Game() : window(nullptr), actor(nullptr), background(nullptr), ball(nullpt
     std::string paddleImagePath = "Images/Paddle.png";
     SplitSpriteSheet* brickSpriteSheet = new SplitSpriteSheet(rendererInstance->GetRenderer(), "Images/Bricks.png", 70, 18);
     SplitSpriteSheet* ballSpriteSheet = new SplitSpriteSheet(rendererInstance->GetRenderer(), "Images/Balls.png", 30, 24);
-    Paddle* paddle = new Paddle(rendererInstance->GetRenderer(), paddleImagePath, paddleX, paddleY, 128, 24);
+    paddle = new Paddle(rendererInstance->GetRenderer(), paddleImagePath, paddleX, paddleY, 128, 24);
     std::cout << "Paddle created: " << paddle << std::endl;
     rendererInstance->AddActor(paddle);
     int numBallColumns = ballSpriteSheet->GetColumns();
@@ -131,18 +131,17 @@ void Game::Run() {
             }
             std::cout << "Key pressed: " << SDL_GetKeyName(e.key.keysym.sym) << std::endl;
         }
-        
+        if (paddle)
+        {
+            paddle->Update();
+            paddle->GetMoveComponent()->Update();
+        }
         
         background.Render();
         rendererInstance->Render();
         rendererInstance->Present();
-        std::cout << "Paddle pointer: " << paddle << std::endl;
-    	if (paddle)
-        {
-            std::cout << "Paddle exists." << std::endl;
-            paddle->GetMoveComponent()->Update();
-            std::cout << "I'm in the if" << std::endl;
-        }
+
+    	
 
         SDL_Delay(16);
     }

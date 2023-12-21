@@ -7,7 +7,6 @@ MoveComponent::MoveComponent(SDL_Renderer* renderer, int speed)
     : renderer(renderer), speed(speed) {}
 
 void MoveComponent::Update() {
-    std::cout << "MoveComponent Update() called" << std::endl;
     const Uint8* keystate = SDL_GetKeyboardState(NULL);
 
     if (keystate[SDL_SCANCODE_LEFT]) {
@@ -27,14 +26,18 @@ void MoveComponent::SetTransformComponent(TransformComponent* transform) {
 
 void MoveComponent::MoveLeft() {
     if (transformComponent) {
+        std::cout << transformComponent->GetX() << std::endl;
         transformComponent->SetX(transformComponent->GetX() - speed);
+        std::cout << transformComponent->GetX() << std::endl;
         std::cout << "MoveLeft called!" << std::endl;
     }
 }
 
 void MoveComponent::MoveRight() {
     if (transformComponent) {
+        std::cout << transformComponent->GetX() << std::endl;
         transformComponent->SetX(transformComponent->GetX() + speed);
+        std::cout << transformComponent->GetX() << std::endl;
         std::cout << "MoveRight called!" << std::endl;
     }
 }

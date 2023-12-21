@@ -17,18 +17,18 @@ Paddle::~Paddle() {
 void Paddle::Update() {
     
     const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
-    std::cout << "MoveComponent pointer: " << GetMoveComponent() << std::endl;
+    
     if (keyboardState[SDL_SCANCODE_LEFT]) {
         moveComponent.MoveLeft();
     }
     if (keyboardState[SDL_SCANCODE_RIGHT]) {
         moveComponent.MoveRight();
     }
-
     moveComponent.Update();
 
 }
 
 MoveComponent* Paddle::GetMoveComponent() const {
+    //std::cout << "MoveComponent pointer: " << moveComponent << std::endl;
     return const_cast<MoveComponent*>(&moveComponent);
 }
