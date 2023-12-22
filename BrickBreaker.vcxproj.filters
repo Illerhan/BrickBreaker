@@ -77,9 +77,6 @@
     <ClInclude Include="Component.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="TransformComponent.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="MoveComponent.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>

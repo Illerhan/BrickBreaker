@@ -15,6 +15,9 @@ public:
     void Render();
     void Present();
     void ClearActors();
+    void RemoveActor(std::vector<Actor*>::iterator it);
+    std::vector<Actor*>& GetActors();
+
 
     SDL_Renderer* GetRenderer() const;
 

@@ -60,3 +60,12 @@ void Renderer::ClearActors() {
     }
     actors.clear();
 }
+
+void Renderer::RemoveActor(std::vector<Actor*>::iterator it) {
+    // Find and erase the actor from the vector
+    actors.erase(it);
+}
+
+std::vector<Actor*>& Renderer::GetActors() {
+    return actors;
+}

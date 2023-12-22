@@ -1,43 +1,23 @@
 #include "MoveComponent.h"
 
-#include <iostream>
-#include <ostream>
+MoveComponent::MoveComponent(float initialVelocityX, float initialVelocityY)
+    : velocityX(initialVelocityX), velocityY(initialVelocityY) {}
 
-MoveComponent::MoveComponent(SDL_Renderer* renderer, int speed)
-    : renderer(renderer), speed(speed) {}
+void MoveComponent::Update(float& x, float& y, float& width, float& height) {
+    // Update position based on current velocity
+    x += velocityX;
+    y += velocityY;
 
-void MoveComponent::Update() {
-    const Uint8* keystate = SDL_GetKeyboardState(NULL);
-
-    if (keystate[SDL_SCANCODE_LEFT]) {
-        MoveLeft();
+    // Example: Bounce off boundaries
+    if (x < 0 || x + width > 800) {
+        velocityX = -velocityX;
     }
 
-    if (keystate[SDL_SCANCODE_RIGHT]) {
-        MoveRight();
-    }
-}
-
-void MoveComponent::SetTransformComponent(TransformComponent* transform) {
-    transformComponent = transform;
-}
-
-
-
-void MoveComponent::MoveLeft() {
-    if (transformComponent) {
-        std::cout << transformComponent->GetX() << std::endl;
-        transformComponent->SetX(transformComponent->GetX() - speed);
-        std::cout << transformComponent->GetX() << std::endl;
-        std::cout << "MoveLeft called!" << std::endl;
+    if (y < 0) {
+        velocityY = -velocityY;
     }
 }
-
-void MoveComponent::MoveRight() {
-    if (transformComponent) {
-        std::cout << transformComponent->GetX() << std::endl;
-        transformComponent->SetX(transformComponent->GetX() + speed);
-        std::cout << transformComponent->GetX() << std::endl;
-        std::cout << "MoveRight called!" << std::endl;
-    }
+void MoveComponent::SetVelocity(float newVelocityX, float newVelocityY) {
+    velocityX = newVelocityX;
+    velocityY = newVelocityY;
 }

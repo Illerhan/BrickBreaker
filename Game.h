@@ -14,6 +14,7 @@ public:
     void Run();
 
 private:
+    void HandleBrickCollisions();
     bool quit;
     SDL_Window* window;
     SDL_Renderer* renderer;

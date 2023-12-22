@@ -156,7 +156,6 @@
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SplitSpriteSheet.h" />
-    <ClInclude Include="TransformComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

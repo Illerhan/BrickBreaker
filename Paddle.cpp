@@ -5,8 +5,7 @@
 #include <ostream>
 
 Paddle::Paddle(SDL_Renderer* renderer, const std::string& imagePath, int x, int y, int width, int height)
-    : Actor(renderer, imagePath, x, y, width, height), moveComponent(renderer, moveSpeed) {
-    moveComponent.SetTransformComponent(GetTransformComponent());
+    : Actor(renderer, imagePath, x, y, width, height), moveComponent(0.5, moveSpeed) {
 }
 
 Paddle::~Paddle() {
@@ -14,17 +13,18 @@ Paddle::~Paddle() {
 
 }
 
-void Paddle::Update() {
+void Paddle::Update() {  
+    
     
     const Uint8* keyboardState = SDL_GetKeyboardState(NULL);
     
     if (keyboardState[SDL_SCANCODE_LEFT]) {
-        moveComponent.MoveLeft();
+ 
     }
     if (keyboardState[SDL_SCANCODE_RIGHT]) {
-        moveComponent.MoveRight();
+        
     }
-    moveComponent.Update();
+
 
 }
 

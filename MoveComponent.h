@@ -1,27 +1,16 @@
 // MoveComponent.h
-#ifndef MOVECOMPONENT_H
-#define MOVECOMPONENT_H
+#pragma once
 
-#include "Component.h"
-#include <SDL.h>
-
-#include "TransformComponent.h"
-
-class MoveComponent : public Component {
+class MoveComponent {
 public:
-    MoveComponent(SDL_Renderer* renderer, int speed = 5);
-    void SetTransformComponent(TransformComponent* transform);
-    MoveComponent* GetMoveComponent() const;
+    MoveComponent(float initialVelocityX, float initialVelocityY);
+    ~MoveComponent() = default;
 
-    virtual void Update() override;
+    void Update(float& x, float& y, float& width, float& height);
 
-    void MoveLeft();
-    void MoveRight();
+    void SetVelocity(float newVelocityX, float newVelocityY);
 
 private:
-    SDL_Renderer* renderer;
-    int speed;
-	TransformComponent* transformComponent;
+    float velocityX;
+    float velocityY;
 };
-
-#endif // MOVECOMPONENT_H

@@ -1,7 +1,10 @@
 #include "Brick.h"
 
+#include "Ball.h"
+
+
 Brick::Brick(SDL_Renderer* renderer, SplitSpriteSheet& spriteSheet, int x, int y, int width, int height, int spriteIndex)
-    : Actor(renderer, spriteSheet.GetSprite(0, spriteIndex), SDL_Rect{ 0, 0, width, height }, x, y, width, height),
+    : Actor(renderer, spriteSheet.GetSprite(0, spriteIndex), SDL_Rect{ 5, 5, width, height }, x, y, width, height),
     spriteSheet(spriteSheet),
     spriteIndex(spriteIndex) {
     // Additional initialization code if needed
@@ -9,6 +12,17 @@ Brick::Brick(SDL_Renderer* renderer, SplitSpriteSheet& spriteSheet, int x, int y
 Brick::~Brick() {
     // Cleanup code if needed
 }
+
+SDL_Rect Brick::GetRect() const {
+    SDL_Rect rect;
+    rect.x = static_cast<int>(x);
+    rect.y = static_cast<int>(y);
+    rect.w = width;
+    rect.h = height;
+    return rect;
+}
+
+
 
 void Brick::Update() {
     // Add any update logic for bricks (if necessary)

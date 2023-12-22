@@ -4,7 +4,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <string>
-#include "TransformComponent.h"
+
 
 class Actor {
 public:
@@ -14,12 +14,12 @@ public:
 
     virtual void Update();
     virtual void Render(SDL_Renderer* renderer);
-    TransformComponent* GetTransformComponent() { return &transformComponent; }
+    
 
 private:
     SDL_Renderer* renderer;
     void LoadTextureFromImage(const std::string& imagePath);
-	TransformComponent transformComponent;
+
 protected:
     SDL_Texture* texture;
     SDL_Rect srcRect;

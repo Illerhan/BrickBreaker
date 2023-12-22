@@ -1,14 +1,17 @@
 #include "Actor.h"
 
+#include <iostream>
+#include <ostream>
+
 
 Actor::Actor(SDL_Renderer* renderer, const std::string& imagePath, int x, int y, int width, int height)
     : renderer(renderer), texture(nullptr) {
     LoadTextureFromImage(imagePath);
     destRect = { x, y, width, height };
 }
-
 Actor::Actor(SDL_Renderer* renderer, SDL_Texture* texture, const SDL_Rect& srcRect, int x, int y, int width, int height)
-    : renderer(renderer), texture(texture), srcRect(srcRect), destRect{ x, y, width, height }, transformComponent(x, y) {
+    : renderer(renderer), texture(texture), srcRect(srcRect), destRect{ x, y, width, height } {
+    
 }
 
 Actor::~Actor() {
@@ -20,7 +23,7 @@ Actor::~Actor() {
 
 
 void Actor::Update() {
-    // Add any necessary update logic here
+    
 }
 
 void Actor::Render(SDL_Renderer* renderer) {

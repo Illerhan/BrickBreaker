@@ -3,7 +3,7 @@
 
 #include "Actor.h"
 #include "MoveComponent.h"
-#include "TransformComponent.h"
+
 
 class Paddle : public Actor {
 public:
@@ -11,7 +11,8 @@ public:
 
     virtual ~Paddle();
 
-    virtual void Update() override;
+    void Update() override;
+
 
     MoveComponent* GetMoveComponent() const;
 
